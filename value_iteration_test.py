@@ -30,6 +30,8 @@ def main():
     print(agent.get_value_function())
 
     agent.update_greedy_policy()
+    
+    print("\nOptimal policy:")
     agent.print_policy()
 
 if __name__=="__main__":
