@@ -24,7 +24,7 @@ class Agent():
     def calculate_max_value(self, i, j):
         # Find the maximum value for the current state using Bellman's equation
         # Start with a - infinite value as the max
-        max_value = float('-inf')
+        max_value = -float('inf')
         best_action = None
         best_actions_str = ""
         # Loop over all actions

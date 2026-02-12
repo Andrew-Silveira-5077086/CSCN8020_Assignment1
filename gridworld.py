@@ -15,10 +15,10 @@ class GridWorld():
         self.reward = np.ones((self.env_size, self.env_size))*-1
         
         # Grey states
-        grey_states = [(1,2), (3,0), (0,4)]
+        self.grey_states = [(1,2), (3,0), (0,4)]
         
-        for (i, j) in grey_states:
-            self.reward[i, j] = -5
+        for (i) in self.grey_states:
+            self.reward[i] = -5
             
         # Terminal reward        
         self.reward[self.terminal_state] = 10
@@ -46,7 +46,7 @@ class GridWorld():
     '''@brief Returns True if the state is a terminal state
     '''
     def is_terminal_state(self, i, j):
-        return (i, j) == self. terminal_state
+        return (i, j) == self.terminal_state
     
     def get_size(self):
         return self.env_size

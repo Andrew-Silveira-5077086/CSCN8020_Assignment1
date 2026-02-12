@@ -19,12 +19,11 @@ class ValueIteration:
 
             for i in range(self.env_size):
                 for j in range(self.env_size):
-
-                    if self.env.is_terminal_state(i,j):
+                    state = (i,j)
+                    if self.env.is_terminal_state(i,j) or state in self.env.grey_states:
                         continue
-
-                    max_value = float("-inf")
-                    best_action = 0
+                    
+                    max_value = -float("inf")
 
                     for a in range(len(self.env.actions)):
                         next_i, next_j, reward, _ = self.env.step(a, i, j)
@@ -32,7 +31,6 @@ class ValueIteration:
 
                         if value > max_value:
                             max_value = value
-                            best_action = a
 
                     new_V[i,j] = max_value
                     delta = max(delta, abs(self.V[i,j] - new_V[i,j]))
@@ -47,12 +45,12 @@ class ValueIteration:
     def extract_policy(self):
         for i in range(self.env_size):
             for j in range(self.env_size):
-
-                if self.env.is_terminal_state(i,j):
-                    self.policy[i,j] = -1
+                state = (i,j)
+                if self.env.is_terminal_state(i,j) or state in self.env.grey_states:
+                    self.policy[i,j] = -1 if self.env.is_terminal_state(i,j) else -5
                     continue
 
-                max_value = float("-inf")
+                max_value = -float("inf")
                 best_action = 0
 
                 for a in range(len(self.env.actions)):
