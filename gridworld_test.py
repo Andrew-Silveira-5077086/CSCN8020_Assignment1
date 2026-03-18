@@ -8,7 +8,7 @@ class ValueIteration:
         self.env = env
         self.env_size = env.get_size()
         self.V = np.zeros((self.env_size, self.env_size))
-        self.gamma = 1.0
+        self.gamma = 0.9
         self.theta = theta
         self.policy = np.zeros((self.env_size, self.env_size), dtype=int)
 

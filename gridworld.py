@@ -12,7 +12,7 @@ class GridWorld():
         self.action_description = ["Right", "Left", "Down", "Up"]
 
         # Assign a vector of rewards for each of the states
-        self.reward = np.ones((self.env_size, self.env_size))*-1
+        self.reward = np.ones((self.env_size, self.env_size)) * -1
         
         # Grey states
         self.grey_states = [(1,2), (3,0), (0,4)]
